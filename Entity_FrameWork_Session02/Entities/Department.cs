@@ -22,7 +22,10 @@ namespace Entity_FrameWork_Session02.Entities
         public DateOnly HiringDate { get; set; }
         [InverseProperty("department_Id")]
         public ICollection<Student> Students { get; set; } = new HashSet<Student>();
+        [InverseProperty("Department_Id")]
         public ICollection<Instructor> Instructors { get; set; } = new HashSet<Instructor>();
+        [InverseProperty("department")]
+        public Instructor Manager { get; set; }
 
     }
 }

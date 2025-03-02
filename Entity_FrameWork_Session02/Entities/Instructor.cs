@@ -31,6 +31,7 @@ namespace Entity_FrameWork_Session02.Entities
         public int? Dept_Id { get; set; }
         [InverseProperty("Instructors")]
         public Department Department_Id { get; set; }
-
+        [InverseProperty("Manager")]
+        public Department department { get; set; }
     }
 }
