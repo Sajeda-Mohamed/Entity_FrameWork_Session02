@@ -22,5 +22,7 @@ namespace Entity_FrameWork_Session02.Entities
         public int? Top_Id { get; set; }
         [InverseProperty("Courses")]
         public Topic Topic_Id { get; set; }
+        public ICollection<Stud_Course> Course_Students { get; set; } = new HashSet<Stud_Course>();
+        public ICollection<Course_Inst> Course_Insts { get; set; } = new HashSet<Course_Inst>();
     }
 }

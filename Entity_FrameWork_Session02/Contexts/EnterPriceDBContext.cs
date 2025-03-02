@@ -32,7 +32,38 @@ namespace Entity_FrameWork_Session02
             modelBuilder.Entity<Student>()
                         .HasOne(S => S.department_Id)
                         .WithMany(D => D.Students);
-            
+            //modelBuilder.Entity<Instructor>()
+            //            .HasMany(I => I.Courses)
+            //            .WithMany(C => C.Instructors);
+            //modelBuilder.Entity<Course>()
+            //            .HasMany(C => C.Students)
+            //            .WithMany(S => S.Courses);
+            //modelBuilder.Entity<Course>()
+            //            .HasMany(C => C.Course_Insts)
+            //            .WithOne(CI => CI.Course)
+            //            .HasForeignKey(CI => CI.Course_Id);
+
+            //modelBuilder.Entity<Instructor>()
+            //            .HasMany(I => I.Inst_Courses)
+            //            .WithOne(IC => IC.Instructor)
+            //            .HasForeignKey(IC => IC.Inst_Id);
+
+            //modelBuilder.Entity<Course_Inst>()
+            //            .HasKey(CI => new { CI.Course_Id, CI.Inst_Id });
+            //////////////////////////////////////////////////////////////
+
+            //modelBuilder.Entity<Course>()
+            //            .HasMany(C => C.Course_Students)
+            //            .WithOne(CS => CS.Course)
+            //            .HasForeignKey(CS => CS.Course_Id);
+
+            //modelBuilder.Entity<Student>()
+            //            .HasMany(S => S.Stud_Courses)
+            //            .WithOne(SC => SC.Student)
+            //            .HasForeignKey(SC => SC.Stud_Id);
+
+            //modelBuilder.Entity<Stud_Course>()
+            //            .HasKey(SC => new { SC.Course_Id, SC.Stud_Id });
         }
     }
 }

@@ -4,6 +4,7 @@ using Entity_FrameWork_Session02;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entity_FrameWork_Session02.Migrations
 {
     [DbContext(typeof(EnterPriceDBContext))]
-    partial class EnterPriceDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250302212658_M2MRelationShip")]
+    partial class M2MRelationShip
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

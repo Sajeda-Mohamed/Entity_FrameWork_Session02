@@ -37,5 +37,6 @@ namespace Entity_FrameWork_Session02.Entities
         public int? Dept_Id { get; set; }
         [InverseProperty("Students")]
         public Department department_Id { get; set; }
+        public ICollection<Stud_Course> Stud_Courses { get; set; } = new HashSet<Stud_Course>();
     }
 }
