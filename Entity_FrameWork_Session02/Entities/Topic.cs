@@ -15,5 +15,6 @@ namespace Entity_FrameWork_Session02.Entities
         [Column(TypeName = "varchar")]
         [MaxLength(20)]
         public string Name { get; set; }
+        public ICollection<Course> Courses { get; set; } = new HashSet<Course>();
     }
 }

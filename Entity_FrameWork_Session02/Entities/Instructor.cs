@@ -26,7 +26,11 @@ namespace Entity_FrameWork_Session02.Entities
         [Required]
         [Column(TypeName = "money")]
         public float Bonus { get; set; }
-        [Required]
-        public int Dept_Id { get; set; }
+
+        [ForeignKey("Department_Id")]
+        public int? Dept_Id { get; set; }
+        [InverseProperty("Instructors")]
+        public Department Department_Id { get; set; }
+
     }
 }

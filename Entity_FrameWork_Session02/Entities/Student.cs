@@ -33,7 +33,9 @@ namespace Entity_FrameWork_Session02.Entities
         [Required]
         [Range(18, 50)]
         public int Age { get; set; }
-        [Required]
-        public int Dept_Id { get; set; }
+        [ForeignKey("department_Id")]
+        public int? Dept_Id { get; set; }
+        [InverseProperty("Students")]
+        public Department department_Id { get; set; }
     }
 }

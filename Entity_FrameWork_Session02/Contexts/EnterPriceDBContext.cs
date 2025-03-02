@@ -29,6 +29,10 @@ namespace Entity_FrameWork_Session02
             modelBuilder.Entity<Course_Inst>()
                .HasKey(sc => new { sc.Inst_Id, sc.Course_Id });
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Student>()
+                        .HasOne(S => S.department_Id)
+                        .WithMany(D => D.Students);
+            
         }
     }
 }

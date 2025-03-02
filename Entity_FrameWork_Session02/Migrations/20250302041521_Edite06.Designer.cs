@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entity_FrameWork_Session02.Migrations
 {
     [DbContext(typeof(EnterPriceDBContext))]
-    [Migration("20250225055229_InitialCreate06")]
-    partial class InitialCreate06
+    [Migration("20250302041521_Edite06")]
+    partial class Edite06
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,13 +155,10 @@ namespace Entity_FrameWork_Session02.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(20)
+                        .HasMaxLength(30)
                         .HasColumnType("varchar");
 
                     b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Dept_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("FName")
@@ -174,9 +171,48 @@ namespace Entity_FrameWork_Session02.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar");
 
+                    b.Property<int>("department_IdId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("department_IdId");
+
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Entity_FrameWork_Session02.Entities.Topic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Topics");
+                });
+
+            modelBuilder.Entity("Entity_FrameWork_Session02.Entities.Student", b =>
+                {
+                    b.HasOne("Entity_FrameWork_Session02.Entities.Department", "department_Id")
+                        .WithMany("Students")
+                        .HasForeignKey("department_IdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("department_Id");
+                });
+
+            modelBuilder.Entity("Entity_FrameWork_Session02.Entities.Department", b =>
+                {
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

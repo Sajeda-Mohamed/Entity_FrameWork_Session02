@@ -20,5 +20,9 @@ namespace Entity_FrameWork_Session02.Entities
         [Required]
         [Column(TypeName = "Date")]
         public DateOnly HiringDate { get; set; }
+        [InverseProperty("department_Id")]
+        public ICollection<Student> Students { get; set; } = new HashSet<Student>();
+        public ICollection<Instructor> Instructors { get; set; } = new HashSet<Instructor>();
+
     }
 }

@@ -4,6 +4,7 @@ using Entity_FrameWork_Session02;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entity_FrameWork_Session02.Migrations
 {
     [DbContext(typeof(EnterPriceDBContext))]
-    partial class EnterPriceDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250302065708_One2ManyRelationShip02")]
+    partial class One2ManyRelationShip02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,7 +111,7 @@ namespace Entity_FrameWork_Session02.Migrations
                     b.Property<decimal>("Bonus")
                         .HasColumnType("money");
 
-                    b.Property<int?>("Dept_Id")
+                    b.Property<int>("Dept_Id")
                         .HasColumnType("int");
 
                     b.Property<float>("HourRate")
@@ -123,8 +126,6 @@ namespace Entity_FrameWork_Session02.Migrations
                         .HasColumnType("money");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Dept_Id");
 
                     b.ToTable("Instructors");
                 });
@@ -209,15 +210,6 @@ namespace Entity_FrameWork_Session02.Migrations
                     b.Navigation("Topic_Id");
                 });
 
-            modelBuilder.Entity("Entity_FrameWork_Session02.Entities.Instructor", b =>
-                {
-                    b.HasOne("Entity_FrameWork_Session02.Entities.Department", "Department_Id")
-                        .WithMany("Instructors")
-                        .HasForeignKey("Dept_Id");
-
-                    b.Navigation("Department_Id");
-                });
-
             modelBuilder.Entity("Entity_FrameWork_Session02.Entities.Student", b =>
                 {
                     b.HasOne("Entity_FrameWork_Session02.Entities.Department", "department_Id")
@@ -229,8 +221,6 @@ namespace Entity_FrameWork_Session02.Migrations
 
             modelBuilder.Entity("Entity_FrameWork_Session02.Entities.Department", b =>
                 {
-                    b.Navigation("Instructors");
-
                     b.Navigation("Students");
                 });
 

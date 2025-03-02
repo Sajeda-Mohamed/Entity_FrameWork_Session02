@@ -5,18 +5,25 @@
 namespace Entity_FrameWork_Session02.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate06 : Migration
+    public partial class Edite06 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.DropColumn(
+                name: "Dept_Id",
+                table: "Students");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.AddColumn<int>(
+                name: "Dept_Id",
+                table: "Students",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
         }
     }
 }
